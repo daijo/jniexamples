@@ -1,0 +1,12 @@
+
+SUBDIRS = SharedStubs
+
+default:
+	@for i in $(SUBDIRS) ; do \
+	   echo ">>>Recursively making "$$i" ..."; \
+	   cd $$i; $(MAKE) -f makefile.solaris $(ACTION) || exit 1; cd ..;  \
+	   echo "<<<Finished Recursively making "$$i"." ; \
+	done
+
+clean:
+	@$(MAKE) -f makefile.solaris ACTION=$@ 

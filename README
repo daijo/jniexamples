@@ -1,0 +1,55 @@
+This directory and its subdirectories contain the example code for:
+
+    The Java Native Interface: Programmer's Guide and Specification
+    Sheng Liang, Addison-Wesley, 1999
+
+Each subdirectory contains the examples for the corresponding chapter.
+You can build and run all examples at once, or visit the subdirectories 
+to build and run individual examples.
+
+On Solaris:
+
+1. In makeincludes.solaris, set the make variable JDK to point to your
+   Java 2 SDK installation.
+2. Type: make -f makefile.solaris
+3. To clean up all build targets, type: make -f makefile.solaris clean
+
+On Win32:
+
+1. In makeincludes.win32, set the make variable JDK to point to your
+   Java 2 SDK installation.
+2. Type: nmake -f makefile.win32
+3. To clean up all build targets, type: nmake -f makefile.win32 clean
+
+README files in subdirectories list the page numbers where the
+example code is discussed in the book.
+
+_________________________________________
+A NOTE ON COMPILING THE EXAMPLES ON WIN32
+
+You can also compile these examples by typing the commands as described
+in the book. However, the Win32 compiler command lines given on pages 
+16 and 87 of the book have an error. The error prevents the native
+library or native application from being linked against msvcrt.dll, the
+multithreaded C runtime library used by the virtual machine implementation
+in JDK 1.1 and Java 2 SDK 1.2.
+
+On page 16, the correct command line for building the HelloWorld example 
+should be:
+
+  cl -Ic:\jdk1.2.1\include -Ic:\jdk1.2.1\include\win32 -MD -LD HelloWorld.c -FeHelloWorld.dll
+
+The original text in the book lacks the -MD option, causing the
+native library to link with the single threaded C runtime library 
+statically, instead of linking against msvcrt.dll dynamically.
+
+On page 87, the correct command line for building invoke.c with
+JDK 1.1 should be:
+
+  cl -Ic:\jdk1.1.8\include -Ic:\jdk1.1.8\include\win32 -MD invoke.c -link c:\jdk1.1.8\lib\javai.lib
+
+The original text in the book incorrectly uses the -MT option instead of
+the -MD option, causing the native library to link with the multithreaded
+C runtime library statically, instead of linking against msvcrt.dll
+dynamically.
+

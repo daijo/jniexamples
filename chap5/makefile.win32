@@ -1,0 +1,14 @@
+
+SUBDIRS = MyNewString
+
+default: $(SUBDIRS)
+
+$(SUBDIRS) ::
+	@echo +++Recursively making $(ACTION) $@ ...
+	@cd $@
+	$(MAKE) -f makefile.win32 -nologo $(ACTION) 
+	@cd ..
+	@echo ---Finished Recursively making $(ACTION) $@.
+
+clean:
+	@$(MAKE) -f makefile.win32 -nologo ACTION=$@ 

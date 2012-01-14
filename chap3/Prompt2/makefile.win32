@@ -1,0 +1,19 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = Prompt.class
+OBJS       = Prompt.obj
+MAIN_CLASS = Prompt
+NATIVE_LIB = Prompt.dll
+
+!include ..\..\makeincludes.win32
+
+Prompt.c : Prompt.h

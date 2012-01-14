@@ -1,0 +1,19 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = StaticMethodCall.class
+OBJS       = StaticMethodCall.obj
+MAIN_CLASS = StaticMethodCall
+NATIVE_LIB = StaticMethodCall.dll
+
+!include ..\..\makeincludes.win32
+
+StaticMethodCall.c : StaticMethodCall.h

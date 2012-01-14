@@ -1,0 +1,18 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# Makefile for the example demonstrating shared dispatchers with JNI.
+#
+
+CLASSES    = NativeString.class
+OBJS       = NativeString.o ThrowByName.o
+MAIN_CLASS = NativeString
+NATIVE_LIB = libNativeString.so
+
+include ../../makeincludes.solaris
+
+NativeString.c : NativeString.h

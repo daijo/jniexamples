@@ -1,0 +1,19 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = InstanceFieldAccess.class
+OBJS       = InstanceFieldAccess.obj
+MAIN_CLASS = InstanceFieldAccess
+NATIVE_LIB = InstanceFieldAccess.dll
+
+!include ..\..\makeincludes.win32
+
+InstanceFieldAccess.c : InstanceFieldAccess.h

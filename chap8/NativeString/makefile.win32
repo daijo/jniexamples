@@ -1,0 +1,19 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = NativeString.class
+OBJS       = NativeString.obj ThrowByName.obj
+MAIN_CLASS = NativeString
+NATIVE_LIB = NativeString.dll
+
+!include ..\..\makeincludes.win32
+
+NativeString.c : NativeString.h

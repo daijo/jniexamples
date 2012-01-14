@@ -1,0 +1,18 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# Makefile for the example demonstrating shared dispatchers with JNI.
+#
+
+CLASSES    = Prompt.class
+OBJS       = Prompt.o
+MAIN_CLASS = Prompt
+NATIVE_LIB = libPrompt.so
+
+include ../../makeincludes.solaris
+
+Prompt.c : Prompt.h

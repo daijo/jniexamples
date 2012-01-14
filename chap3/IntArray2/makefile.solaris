@@ -1,0 +1,18 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# Makefile for the example demonstrating shared dispatchers with JNI.
+#
+
+CLASSES    = IntArray.class
+OBJS       = IntArray.o
+MAIN_CLASS = IntArray
+NATIVE_LIB = libIntArray.so
+
+include ../../makeincludes.solaris
+
+IntArray.c : IntArray.h

@@ -1,0 +1,10 @@
+Example			Page #
+------------------------------
+InstanceFieldAccess	42
+InstanceFieldAccess2	54
+InstanceMethodCall	46
+InstanceMethodCall2	56
+MyNewString		51
+MyNewString2		55
+StaticFieldAccess	45
+StaticMethodCall	50

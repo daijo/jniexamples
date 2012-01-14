@@ -1,0 +1,33 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = Main.class CFunction.class CPointer.class CMalloc.class
+OBJS       = dispatch_x86.obj dispatch.obj
+MAIN_CLASS = Main
+NATIVE_LIB = disp.dll
+
+# Use the follwing to compile shared stub code exactly as documented
+# in the JNI book:
+#
+#          nmake -f makefile.win32 JNI_BOOK = true
+#
+JNI_BOOK = false
+!if "$(JNI_BOOK)" == "true"
+CFLAGS   = -DJNI_BOOK
+CPPFLAGS = -DJNI_BOOK
+!endif
+
+!include ..\..\makeincludes.win32
+
+dispatch.cpp: CFunction.h CMalloc.h CPointer.h
+
+dispatch_x86.c: CFunction.h CMalloc.h CPointer.h
+

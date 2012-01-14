@@ -1,0 +1,19 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = CatchThrow.class
+OBJS       = CatchThrow.obj
+MAIN_CLASS = CatchThrow
+NATIVE_LIB = CatchThrow.dll
+
+!include ..\..\makeincludes.win32
+
+CatchThrow.c : CatchThrow.h

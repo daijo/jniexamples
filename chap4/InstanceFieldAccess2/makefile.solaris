@@ -1,0 +1,18 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# Makefile for the example demonstrating shared dispatchers with JNI.
+#
+
+CLASSES    = InstanceFieldAccess.class
+OBJS       = InstanceFieldAccess.o
+MAIN_CLASS = InstanceFieldAccess
+NATIVE_LIB = libInstanceFieldAccess.so
+
+include ../../makeincludes.solaris
+
+InstanceFieldAccess.c : InstanceFieldAccess.h

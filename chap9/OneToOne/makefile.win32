@@ -1,0 +1,19 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = OneToOne.class
+OBJS       = OneToOne.obj
+MAIN_CLASS = OneToOne
+NATIVE_LIB = OneToOne.dll
+
+!include ..\..\makeincludes.win32
+
+OneToOne.cpp: C.h Win32.h

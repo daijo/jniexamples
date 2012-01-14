@@ -1,0 +1,18 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = Prog.class
+OBJS       = invoke.obj
+NATIVE_APP = invoke.exe
+
+default: runapp
+
+!include ..\..\makeincludes.win32

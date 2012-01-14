@@ -1,0 +1,112 @@
+
+                                README
+
+                       Shared Stubs JNI Example
+
+-----------------------------------------------------------------------
+
+This directory contains an example demonstrating the use of shared
+stubs for calling native code from Java(tm) applications.  For
+instance, we show how you could call the function printf from the
+standard C library with little work.
+
+For more information about shared stubs, we encourage you to read the
+source code in this directory; this is an annotated example! Start
+with the file Main.java.
+
+At the time of this writing, we have implemented shared stubs for
+SPARC based Solaris(tm) and 32 bit Windows(tm) platforms.
+
+
+----------------------------------------------------------------------
+Contents
+----------------------------------------------------------------------
+
+We give a short description of the contents of this directory.  If you
+are learning this example, and how it works, it might help to browse
+the files in the order listed here.
+
+    Main.java           Entry point to this example.  Shows how you
+                        would call C functions such as printf, scanf,
+			etc.
+
+    makefile.solaris    Makefiles for compiling and running this
+    makefile.win32      example on Solaris and Windows.
+
+    CFunction.java      An abstraction for a C funtion.  Users will
+                        create an instance of class CFunction, and then do
+                        a "callXXX" operation on that instance to cause
+                        the real C function to be called.
+
+    CPointer.java	An abstraction for a C pointer that points to
+			an arbitrary C type.  Think of an instance of
+			CPointer as a something that represents a
+			"void *". CPointer provides methods that let you
+			indirect the "void *" and get at what is
+			pointed at as a Java data type.
+
+    CMalloc.java        Just a CPointer, but the CPointer represents a C
+			pointer that has been malloc'ed on the C heap.
+			Use this if you have to pass malloc()'ed
+			memory to some CFunction.
+
+    dispatch.c		Implementation of the shared stub native methods.
+			
+    dispatch_sparc.s	SPARC specific parts of dispatch.c.
+
+    dispatch_x86.c	Win32/x86 specific parts of dispatch.c.
+
+
+----------------------------------------------------------------------
+Requirements
+----------------------------------------------------------------------
+
+To build and run this example you will need one of the following
+operating systems: 
+
+        - SPARC based Solaris 2.4 (or higher)
+        - Windows NT 4.0
+        - Windows 95
+
+You will have to install JDK(tm) software, release 1.1 or higher.
+
+On Solaris you will need a C compiler (cc or gcc), and tools "as",
+"ld" and "make", available in /usr/ccs/bin.  On Windows, you will need
+the utilities "nmake" and "cl" from the Microsoft Developer Studio
+suite of products; however, it should be trivial to create a makefile
+to run this example with other C compilers.
+
+
+----------------------------------------------------------------------
+Compiling and running
+----------------------------------------------------------------------
+
+On Solaris, if you have JDK software installed in /home/user/jdk,
+type:
+
+        % make -f makefile.solaris JDK=/home/user/jdk
+
+On Win32, if you have JDK software installed in c:\jdk, type:
+
+        C:\JNI_Example> nmake -f makefile.win32 JDK=c:\jdk
+
+The default target runs the example, in addition to compiling it.
+If you wish to only compile the example, specify the target "build"
+explicitly at the make command line.
+
+
+----------------------------------------------------------------------
+Comments and feedback
+----------------------------------------------------------------------
+
+Please send comments about this example, and JNI in general, to the
+alias "jni@java.sun.com".  We welcome your feedback!  Folks on this
+alias are developers, and will not be able to provide support, but
+will read comments.
+
+For support, please visit the Java(tm) Developer Connection at:
+              http://java.sun.com/jdc
+
+If you find any bugs in this example, please send email to the JNI
+alias.  Please file JNI bug reports at:
+              http://java.sun.com/cgi-bin/bugreport.cgi

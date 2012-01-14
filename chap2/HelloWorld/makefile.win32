@@ -1,0 +1,19 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = HelloWorld.class
+OBJS       = HelloWorld.obj
+MAIN_CLASS = HelloWorld
+NATIVE_LIB = HelloWorld.dll
+
+!include ..\..\makeincludes.win32
+
+HelloWorld.c: HelloWorld.h

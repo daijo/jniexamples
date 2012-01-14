@@ -1,0 +1,19 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = InstanceMethodCall.class
+OBJS       = InstanceMethodCall.obj
+MAIN_CLASS = InstanceMethodCall
+NATIVE_LIB = InstanceMethodCall.dll
+
+!include ..\..\makeincludes.win32
+
+InstanceMethodCall.c : InstanceMethodCall.h

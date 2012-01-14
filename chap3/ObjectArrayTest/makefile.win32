@@ -1,0 +1,19 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = ObjectArrayTest.class
+OBJS       = ObjectArrayTest.obj
+MAIN_CLASS = ObjectArrayTest
+NATIVE_LIB = ObjectArrayTest.dll
+
+!include ..\..\makeincludes.win32
+
+ObjectArrayTest.c : ObjectArrayTest.h

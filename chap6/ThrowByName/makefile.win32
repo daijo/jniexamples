@@ -1,0 +1,19 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# NMake makefile for the example demonstrating shared dispatchers with
+# JNI.
+#
+
+CLASSES    = ThrowByName.class
+OBJS       = ThrowByName.obj
+MAIN_CLASS = ThrowByName
+NATIVE_LIB = ThrowByName.dll
+
+!include ..\..\makeincludes.win32
+
+ThrowByName.c : ThrowByName.h
