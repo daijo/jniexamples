@@ -7,6 +7,10 @@ Each subdirectory contains the examples for the corresponding chapter.
 You can build and run all examples at once, or visit the subdirectories 
 to build and run individual examples.
 
+On Mac:
+1. Type: make -f makefile.mac
+2. To clean up all build targets, type: make -f makefile.mac clean
+
 On Solaris:
 
 1. In makeincludes.solaris, set the make variable JDK to point to your
