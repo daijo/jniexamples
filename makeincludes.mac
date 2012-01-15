@@ -1,0 +1,84 @@
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# Makefile for the example demonstrating shared dispatchers with JNI.
+#
+
+#
+# Change this to reflect your setting.  Or override it at the make
+# command line:
+#	% make JDK=/home/you/jdk
+#
+
+#JDK = /usr/bin
+
+JVM_HEADERS = /System/Library/Frameworks/JavaVM.framework/Headers
+
+CFLAGS       += -x c -I$(JVM_HEADERS)
+CPPFLAGS     += -c -g -I$(JVM_HEADERS)
+.SUFFIXES: .java .class .cpp .o
+
+#
+# Targets.
+#
+run: build FORCE
+	#@echo LD_LIBRARY_PATH=.:$$LD_LIBRARY_PATH; \
+	#LD_LIBRARY_PATH=.:$$LD_LIBRARY_PATH; \
+	#echo export LD_LIBRARY_PATH; \
+	#export LD_LIBRARY_PATH; \
+	echo java $(MAIN_CLASS); \
+	java $(MAIN_CLASS)
+
+build: $(CLASSES) $(NATIVE_LIB) FORCE
+
+runapp: buildapp FORCE
+	#@echo LD_LIBRARY_PATH=$(JVM_HEADERS):$$LD_LIBRARY_PATH; \
+	#LD_LIBRARY_PATH=$(JVM_HEADERS):$$LD_LIBRARY_PATH; \
+	#echo export LD_LIBRARY_PATH; \
+	#export LD_LIBRARY_PATH; \
+	echo $(NATIVE_APP); \
+        $(NATIVE_APP)
+
+buildapp: $(CLASSES) $(NATIVE_APP) FORCE
+
+#
+# Build class files.
+#
+.java.class:
+	javac $<
+
+.cpp.o:
+	CC $(CPPFLAGS) $<
+
+#
+# Run javah.
+#
+.class.h:
+	javah -jni $(<:%.class=%)
+
+#
+# Build .c files.
+#
+$(NATIVE_LIB): $(OBJS)
+	gcc -dynamiclib -o $(NATIVE_LIB) $(OBJS)
+
+#
+# Note that you should always include -lthread as the first option to the
+# linker when building multithreaded Solaris applications.
+#
+#$(NATIVE_APP): $(OBJS)
+#	gcc -dynamiclib -o $(NATIVE_LIB) $(OBJS)
+
+#
+# Remove generated stuff.
+#
+clean: FORCE
+	rm -f *.o *.h
+	rm -f *.so *.class $(NATIVE_APP) *.jnilib
+	rm -f *.tst
+
+#
+# Handling phony targets.
+#
+FORCE: ;

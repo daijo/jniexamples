@@ -1,0 +1,12 @@
+
+SUBDIRS = chap2 chap3 chap4 chap5 chap6 chap7 chap8 chap9
+
+default: 
+	@for i in $(SUBDIRS) ; do \
+	   echo ">>>Recursively making "$$i" ..."; \
+	   cd $$i; $(MAKE) -f makefile.mac $(ACTION) || exit 1; cd ..;  \
+	   echo "<<<Finished Recursively making "$$i"." ; \
+	done
+
+clean:
+	@$(MAKE) -f makefile.mac ACTION=$@ 
