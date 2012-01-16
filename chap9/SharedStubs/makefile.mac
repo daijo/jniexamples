@@ -1,0 +1,34 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# Makefile for the example demonstrating shared dispatchers with JNI.
+#
+
+CLASSES    = Main.class CFunction.class CPointer.class CMalloc.class
+OBJS       = dispatch_sparc.o dispatch.o
+MAIN_CLASS = Main
+NATIVE_LIB = libdisp.so
+
+include ../../makeincludes.mac
+
+dispatch.cpp: CFunction.h CPointer.h CMalloc.h
+
+#
+# Generate documentation.
+#
+DOCFLAGS += -author -overview README.html \
+	    -doctitle "Shared Stubs JNI Example"
+DOCDIR    = docs
+
+javadoc: checkjdk
+	rm -fr docs
+	mkdir -p docs
+	@echo '<body><pre>' > README.html
+	@sed '1,7d' README >> README.html
+	@echo '</pre></body>' >> README.html
+	$(JDK)/bin/javadoc $(DOCFLAGS) -d $(DOCDIR) ""
+	@rm -f README.html

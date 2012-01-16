@@ -1,0 +1,19 @@
+
+SUBDIRS = InstanceFieldAccess \
+          InstanceFieldAccess2 \
+          InstanceMethodCall \
+          InstanceMethodCall2 \
+          MyNewString \
+          MyNewString2 \
+          StaticFieldAccess \
+          StaticMethodCall
+
+default:
+	@for i in $(SUBDIRS) ; do \
+	   echo ">>>Recursively making "$$i" ..."; \
+	   cd $$i; $(MAKE) -f makefile.mac $(ACTION) || exit 1; cd ..;  \
+	   echo "<<<Finished Recursively making "$$i"." ; \
+	done
+
+clean:
+	@$(MAKE) -f makefile.mac ACTION=$@ 

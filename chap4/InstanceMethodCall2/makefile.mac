@@ -1,0 +1,18 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# Makefile for the example demonstrating shared dispatchers with JNI.
+#
+
+CLASSES    = InstanceMethodCall.class
+OBJS       = InstanceMethodCall.o
+MAIN_CLASS = InstanceMethodCall
+NATIVE_LIB = libInstanceMethodCall.so
+
+include ../../makeincludes.mac
+
+InstanceMethodCall.c : InstanceMethodCall.h

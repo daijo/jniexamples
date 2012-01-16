@@ -1,0 +1,18 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# Makefile for the example demonstrating shared dispatchers with JNI.
+#
+
+CLASSES    = StaticFieldAccess.class
+OBJS       = StaticFieldAccess.o
+MAIN_CLASS = StaticFieldAccess
+NATIVE_LIB = libStaticFieldAccess.so
+
+include ../../makeincludes.mac
+
+StaticFieldAccess.c : StaticFieldAccess.h

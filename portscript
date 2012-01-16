@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cp $1/makefile.solaris $1/makefile.mac_
+
+cat $1/makefile.mac_ | sed -e 's/.solaris/.mac/' > $1/makefile.mac
+rm $1/makefile.mac_
+
+dirs=`ls -l $1 | grep ^d | awk '{print $9}'`
+
+echo $dirs
+
+for dir in $dirs
+do
+  echo "Looking in $dir"
+  cp $1/$dir/makefile.solaris $1/$dir/makefile.mac_
+  cat $1/$dir/makefile.mac_ | sed -e 's/.solaris/.mac/' > $1/$dir/makefile.mac 
+  rm $1/$dir/makefile.mac_
+done 

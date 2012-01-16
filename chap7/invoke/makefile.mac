@@ -1,0 +1,17 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# Makefile for the example demonstrating shared dispatchers with JNI.
+#
+
+CLASSES    = Prog.class
+OBJS       = invoke.o
+NATIVE_APP = invoke
+
+default: runapp
+
+include ../../makeincludes.mac

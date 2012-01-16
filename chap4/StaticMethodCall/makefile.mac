@@ -1,0 +1,18 @@
+#
+# %W% %E%
+#
+# Copyright (c) 1998 Sun Microsystems, Inc. All Rights Reserved.
+#
+# See also the LICENSE file in this distribution.
+#
+# Makefile for the example demonstrating shared dispatchers with JNI.
+#
+
+CLASSES    = StaticMethodCall.class
+OBJS       = StaticMethodCall.o
+MAIN_CLASS = StaticMethodCall
+NATIVE_LIB = libStaticMethodCall.so
+
+include ../../makeincludes.mac
+
+StaticMethodCall.c : StaticMethodCall.h
